@@ -6,8 +6,6 @@ from flask_bcrypt import Bcrypt
 
 db = SQLAlchemy()
 bcrypt = Bcrypt()
-DB_NAME = "database.db"
-
 
 def create_app():
     app = Flask(__name__)
@@ -36,12 +34,6 @@ def create_app():
         return Users.query.get(int(user_id))
 
     return app
-
-
-def create_database(app):
-    if not path.exists(DB_NAME):
-        db.create_all(app=app)
-        print('Created Database!')
 
 
 if __name__ == '__main__':
